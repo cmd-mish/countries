@@ -9,7 +9,7 @@ const CountryView = ({ countries, selectedName }) => {
   if (!currentCountry) return <p><i>information unavaulable</i></p>
 
   return (
-    <Card style={{ width: '18rem' }} className="mt-4">
+    <Card className="mt-4">
       <Card.Img variant="top" src={currentCountry.flags.svg} />
       <Card.Body>
         <Card.Title>{currentCountry.name.common}</Card.Title>
