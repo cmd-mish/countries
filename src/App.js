@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+import CountryList from './components/CountryList'
+
 const App = () => {
   const [countries, setCountries] = useState(null)
-  const [selected, setSelected] = useState(null)
+  const [selectedName, setSelectedName] = useState(null)
 
   useEffect(() => {
     axios
@@ -17,15 +19,7 @@ const App = () => {
 
   return (
     <>
-      <select onChange={({ target }) => setSelected(target.value)}>
-        <option value="null" selected={true}>- Select a country -</option>
-        {countries
-          .sort((a, b) => a.name.common.localeCompare(b.name.common))
-          .map(country => (
-            <option key={country.name.common} value={country.name.common}>{country.name.common}</option>
-          ))}
-      </select>
-
+      <CountryList countries={countries} setSelectedName={setSelectedName} />
     </>
 
   )
