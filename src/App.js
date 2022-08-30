@@ -22,12 +22,12 @@ const App = () => {
   if (countries === null) return <div>loading...</div>
 
   return (
-    <Container fluid="md">
+    <Container fluid="md" className='mt-3'>
       <Row className="justify-content-md-center">
-        <Col md={3}>
+        <Col lg={3}>
           <CountryList countries={countries} setSelectedName={setSelectedName} />
         </Col>
-        <Col sm={5}>
+        <Col lg={5}>
           <CountryView countries={countries} selectedName={selectedName} />
         </Col>
 
