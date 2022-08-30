@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 
-function App() {
+const App = () => {
+  const [countries, setCountries] = useState(null)
+  const [selected, setSelected] = useState(null)
+
+  useEffect(() => {
+    axios
+      .get('https://restcountries.com/v3.1/all')
+      .then(response => {
+        setCountries(response.data)
+      })
+  })
+
+  if (countries === null) return <div>loading...</div>
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <>
+      <select onChange={({ target }) => setSelected(target.value)}>
+        <option value="null" selected={true}>- Select a country -</option>
+        {countries
+          .sort((a, b) => a.name.common.localeCompare(b.name.common))
+          .map(country => (
+            <option key={country.name.common} value={country.name.common}>{country.name.common}</option>
+          ))}
+      </select>
+
+    </>
+
+  )
 }
 
-export default App;
+export default App
