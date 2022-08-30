@@ -14,7 +14,7 @@ const App = () => {
       .then(response => {
         setCountries(response.data)
       })
-  })
+  }, [])
 
   if (countries === null) return <div>loading...</div>
 
@@ -23,7 +23,6 @@ const App = () => {
       <CountryList countries={countries} setSelectedName={setSelectedName} />
       <CountryView countries={countries} selectedName={selectedName} />
     </>
-
   )
 }
 
