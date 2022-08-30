@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 
 import CountryList from './components/CountryList'
+import CountryView from './components/CountryView'
 
 const App = () => {
   const [countries, setCountries] = useState(null)
@@ -20,6 +21,7 @@ const App = () => {
   return (
     <>
       <CountryList countries={countries} setSelectedName={setSelectedName} />
+      <CountryView countries={countries} selectedName={selectedName} />
     </>
 
   )
