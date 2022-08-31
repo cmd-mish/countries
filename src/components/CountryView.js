@@ -1,5 +1,4 @@
-import Card from 'react-bootstrap/Card';
-import Alert from 'react-bootstrap/Alert';
+import { Card, Alert } from 'react-bootstrap';
 
 const CountryView = ({ countries, selectedName }) => {
   if (selectedName === null) return <Alert variant='warning' className='mt-3'>Select a country from the list!</Alert>

@@ -13,7 +13,6 @@ const CountryList = ({ countries, setSelectedName }) => {
           ))}
       </Form.Select>
     </>
-
   )
 }
 
